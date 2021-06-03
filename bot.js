@@ -1,3 +1,5 @@
+const express = require('express');
+const app = express();
 const { Telegraf } = require('telegraf');
 
 const dotenv = require('dotenv');
@@ -127,3 +129,15 @@ bot.launch();
 
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
+
+app.get('/', (req, res) => {
+    console.log('You got me ');
+});
+
+
+const PORT = process.env.PORT || 3000;;
+
+
+app.listen(PORT, () => {
+    console.log(`server started at ${ PORT }`);
+});
