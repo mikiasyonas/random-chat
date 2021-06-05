@@ -1,0 +1,11 @@
+---
+application:
+  name: "random-chat"
+  project: "random-chat"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-random-chat"
+  routes:
+  - application_name: "random-chat"
+    paths:
+    - "/*"
