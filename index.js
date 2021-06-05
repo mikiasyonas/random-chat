@@ -1,5 +1,3 @@
-const express = require('express');
-const app = express();
 const { Telegraf } = require('telegraf');
 
 const dotenv = require('dotenv');
@@ -8,11 +6,6 @@ dotenv.config();
 
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-const URL = process.env.URL;
-const PORT = process.env.PORT || 3000;
-
-bot.telegram.setWebhook(`${ URL }/bot${ process.env.BOT_TOKEN }`);
-app.use(bot.webhookCallback(`/bot${ process.env.BOT_TOKEN }`));
 
 var matchedUsers = new Map();
 
@@ -135,13 +128,5 @@ bot.launch();
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
 
-app.get('/', (req, res) => {
-    res.send('Well hello there');
-});
-
-
-app.listen(PORT, () => {
-    console.log('server started at port 3000');
-})
 
 
